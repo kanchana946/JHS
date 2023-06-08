@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "832909e8-7fed-4ba5-9524-913abe35753c",
+		"name": "JHS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18738426"
+	},
+	"item": [
+		{
+			"name": "GetMenus",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userID\":\"460b71b6-308a-11eb-978c-005056af269b\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://183.82.2.55:8080/jhswebapi/api/Geofence/GetMenus",
+					"protocol": "http",
+					"host": [
+						"183",
+						"82",
+						"2",
+						"55"
+					],
+					"port": "8080",
+					"path": [
+						"jhswebapi",
+						"api",
+						"Geofence",
+						"GetMenus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createAndUpdateDriver",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var Bodydata = JSON.parse(responseBody)\r",
+							"var Driver = Bodydata.DriverID\r",
+							"console.log(Driver)\r",
+							"pm.collectionVariables.set(\"driver\",Bodydata.DriverID)\r",
+							"var DriverIMEI = Bodydata.DriverIMEI\r",
+							"console.log(DriverIMEI)\r",
+							"pm.collectionVariables.set(\"DriverIMEI\",Bodydata.imei)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": " {{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "tokenuserid",
+						"value": "{{Userid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Rahman\",\r\n    \"mno\": \"9946466466\",\r\n    \"email\": null,\r\n    \"licenseno\": \"\",\r\n    \"licenseexpirydate\": null,\r\n    \"contractorID\": null,\r\n    \"badgeno\": null,\r\n    \"aadhar\": null,\r\n    \"pan\": null,\r\n    \"addr\": null,\r\n    \"sts\": 1,\r\n    \"driverType\": 1,\r\n    \"pwd\": \"\",\r\n    \"adminid\": \"ranjit@assettl.com\",\r\n    \"userid\": \"460b71b6-308a-11eb-978c-005056af269b\",\r\n    \"clientID\": \"11\",\r\n    \"enterpriseCode\": \"1007\",\r\n    \"roleId\": \"\",\r\n    \"_id\": \"08ec622b-ef2d-11ed-8a7f-000c29a442fb\",\r\n    \"img\": null,\r\n    \"moduleType\": null,\r\n    \"saveMode\": \"modify\",\r\n    \"multipleFilePath\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://183.82.2.55:8080/jhswebapi/api/fleetmaster/driver/v3/createAndUpdateDriver",
+					"protocol": "http",
+					"host": [
+						"183",
+						"82",
+						"2",
+						"55"
+					],
+					"port": "8080",
+					"path": [
+						"jhswebapi",
+						"api",
+						"fleetmaster",
+						"driver",
+						"v3",
+						"createAndUpdateDriver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://183.82.2.55:8080/jhswebapi/API/login/v5/loginWithOTP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email_mno\":\"ranjit@assettl.com\",\"pwd_passcode\":\"Rjil@12345\",\"is_mobile\":false}"
+				},
+				"url": {
+					"raw": "http://183.82.2.55:8080/jhswebapi/API/login/v5/loginWithOTP",
+					"protocol": "http",
+					"host": [
+						"183",
+						"82",
+						"2",
+						"55"
+					],
+					"port": "8080",
+					"path": [
+						"jhswebapi",
+						"API",
+						"login",
+						"v5",
+						"loginWithOTP"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verifyLoginOTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobileNo\":\"9000264416\",\"otp\":\"123456\",\"recaptcha\":\"\",\"isrecaptchashow\":false}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://183.82.2.55:8080/jhswebapi/API/login/v6/verifyLoginOTP",
+					"protocol": "http",
+					"host": [
+						"183",
+						"82",
+						"2",
+						"55"
+					],
+					"port": "8080",
+					"path": [
+						"jhswebapi",
+						"API",
+						"login",
+						"v6",
+						"verifyLoginOTP"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var Bodydata = JSON.parse(responseBody)\r",
+							"var Token = Bodydata.adata.accesstoken.token\r",
+							"var Userid = Bodydata.adata.Userid\r",
+							"console.log(Token)\r",
+							"console.log(Userid)\r",
+							"pm.collectionVariables.set(\"Token\",Bodydata.adata.accesstoken.token)\r",
+							"pm.collectionVariables.set(\"Userid\",Bodydata.adata.Userid)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"ranjit@assettl.com\",\"password\":\"Rjil@12345\",\"is_mobile\":false,\"otp\":\"123456\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://183.82.2.55:8080/jhswebapi/API/Login/v7/Token",
+					"protocol": "http",
+					"host": [
+						"183",
+						"82",
+						"2",
+						"55"
+					],
+					"port": "8080",
+					"path": [
+						"jhswebapi",
+						"API",
+						"Login",
+						"v7",
+						"Token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginWithOTP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email_mno\":\"ranjit@assettl.com\",\"pwd_passcode\":\"Rjil@12345\",\"is_mobile\":false}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/jhswebapi/API/login/v5/loginWithOTP",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jhswebapi",
+						"API",
+						"login",
+						"v5",
+						"loginWithOTP"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQ0NjkwMTYsImV4cCI6MTY4NDcyODIxNn0.W4kjQi-Myc56OUHTPKVimWnOdQ3Hqk9rv7vg5VPcWqU"
+		},
+		{
+			"key": "Userid",
+			"value": "460b71b6-308a-11eb-978c-005056af269b"
+		},
+		{
+			"key": "Token",
+			"value": ""
+		},
+		{
+			"key": "driver",
+			"value": ""
+		},
+		{
+			"key": "DriverIMEI",
+			"value": ""
+		}
+	]
+}
